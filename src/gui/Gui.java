@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,15 +13,16 @@ import javax.swing.JTextField;
 import calc.Calc;
 import orga.SaveData;
 import orga.ShowData;
-import other.Mix;
+import testclasses.Mix;
 
 public class Gui extends JFrame implements ActionListener{
 	
 	private JPanel myPanel = new JPanel();
+	Font myFont = new Font("SansSerif", Font.PLAIN, 11);
 
 	private JButton calcButton = new JButton("Berechne!");
 	private JButton buttonSaveMix = new JButton("Speichere Mischung");
-	private JButton buttonShowMix = new JButton("Zeige + lade gespeicherte Mischungen");
+	private JButton buttonShowMix = new JButton("Zeige + lade gespeicherte Mischung");
 
 	private JLabel labelGesVol = new JLabel("Gesamtvolumen soll sein (in ml):");
 	private JLabel labelAroma = new JLabel("gewünschte % Aroma:");
@@ -37,6 +39,7 @@ public class Gui extends JFrame implements ActionListener{
 	private JTextField resBaseVol = new JTextField(8);
 	private JTextField resAromaVol = new JTextField(8);
 	private JTextField resNicVol = new JTextField(8);
+	private JTextField showSavedMix = new JTextField(30);
 	
 	
 	private Mix myMix;
@@ -49,7 +52,7 @@ public class Gui extends JFrame implements ActionListener{
 		myRechner = new Calc(this);
 		mySaver = new SaveData(this);
 		myAnzeiger = new ShowData(this);
-		setSize(900, 320);
+		setSize(900, 420);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 	
@@ -78,29 +81,33 @@ public class Gui extends JFrame implements ActionListener{
 		labelNikotin.setBounds(45, 105, 250, 50); 
 		myPanel.add(labelNikotin);
 		
-		resBaseVol.setBounds(670, 15, 100, 30); 
+		resBaseVol.setBounds(680, 15, 100, 30); 
 		myPanel.add(resBaseVol);
-		resAromaVol.setBounds(670, 65, 100, 30); 
+		resAromaVol.setBounds(680, 65, 100, 30); 
 		myPanel.add(resAromaVol);
-		resNicVol.setBounds(670, 115, 100, 30); 
+		resNicVol.setBounds(680, 115, 100, 30); 
 		myPanel.add(resNicVol);
 		
-		labelResGesVol.setBounds(420, 5, 250, 50);
+		labelResGesVol.setBounds(440, 5, 250, 50);
 		myPanel.add(labelResGesVol);
-		labelResAroma.setBounds(420, 55, 250, 50);
+		labelResAroma.setBounds(440, 55, 250, 50);
 		myPanel.add(labelResAroma);
-		labelResNikotin.setBounds(420, 105, 250, 50); 
+		labelResNikotin.setBounds(440, 105, 250, 50); 
 		myPanel.add(labelResNikotin);
 		
 		calcButton.setBounds(180, 170, 120, 25); 
 		calcButton.addActionListener(event -> actionPerformed(event));
 		myPanel.add(calcButton);
-		buttonSaveMix.setBounds(525, 170, 180, 25);
+		buttonSaveMix.setBounds(525, 170, 200, 25);
 		buttonSaveMix.addActionListener(event -> actionPerformed(event));
 		myPanel.add(buttonSaveMix);
 		buttonShowMix.setBounds(270, 220, 320, 25); 
 		buttonShowMix.addActionListener(event -> actionPerformed(event));
 		myPanel.add(buttonShowMix);
+		
+		showSavedMix.setFont(myFont);
+		showSavedMix.setBounds(30, 280, 850, 25);
+		myPanel.add(showSavedMix);
 		
 		add(myPanel);
 
@@ -182,7 +189,10 @@ public class Gui extends JFrame implements ActionListener{
 	public JTextField getResNicVol() {
 		return resNicVol;
 	}
-
+	
+	public JTextField getShowSavedMix() {
+		return showSavedMix;
+	}
 
 	
 	

@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import gui.Gui;
 
 public class ShowData {
+	public static String newline = System.getProperty("line.separator");
 	
 	private String path;
 	
@@ -19,6 +20,7 @@ public class ShowData {
 	public ShowData(Gui g) {
 		myGui = g;
 	}
+
 	
 	public void showButtonActions() {
 		zeigeMix();
@@ -54,11 +56,14 @@ public class ShowData {
 					if(_byte!=-1)
 					{
 						_char = (char)_byte;			// wandle Byte nach Char
-						buffer  += _char;				// anhÃ€ngen an String	
+						buffer  += _char;				// anhängen an String	
 					}
 				}
 				
 			System.out.println("Anzeige Ihrer gewählten Mischung: " + buffer);
+			String firstPart = fileToRead.getAbsolutePath() + ": ";
+			String secondPart = buffer;
+			myGui.getShowSavedMix().setText(firstPart + " " + secondPart);
 					inStream.close();
 			 }
 			catch (Exception e)
@@ -68,5 +73,6 @@ public class ShowData {
 		}
 		
 	}
+
 
 }

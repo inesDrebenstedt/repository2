@@ -27,9 +27,9 @@ public class SaveData {
 
 	public void saveDialog() {
 		
-		txtToSave = "Fuer ein Gesamtvolumen von " + myGui.getFieldGesVol().getText() +" ml: zuzugebende Base in ml: " + myGui.getResBaseVol().getText() + ", "
-				+  "ml Aroma: " + myGui.getResAromaVol().getText() + ", "						
-				+  "ml Nikotinloesung: " + myGui.getResNicVol().getText() + "\n\n";
+		txtToSave = "Fuer ein Gesamtvolumen von " + myGui.getFieldGesVol().getText() +" ml -> zuzugebende Base in ml: " + myGui.getResBaseVol().getText() + ", "
+				+  "Aroma/ml: " + myGui.getResAromaVol().getText() + ", "						
+				+  "Nikotinloesung/ml: " + myGui.getResNicVol().getText() + "\n\n";
 		
 		
 		JFrame parentFrame = new JFrame();
@@ -46,12 +46,12 @@ public class SaveData {
 			try {
 				FileOutputStream outStream = new FileOutputStream(fileToSave.getAbsolutePath()); // file objekt
 
-				for (int i = 0; i < txtToSave.length(); i++) // fÃŒr jedes Zeichen von Text ...
+				for (int i = 0; i < txtToSave.length(); i++) // für jedes Zeichen von Text ...
 				{
 					byte c = (byte) txtToSave.charAt(i); // nimm Zeichen und wandle nach Byte
 					outStream.write(c); // schreibe Byte ins File ...
 				}
-				outStream.close(); // endgültiges Schreiben auf den Datenträger, wie beim USB abstöpseln
+				outStream.close(); // endg�ltiges Schreiben auf den Datentr�ger, wie beim USB abst�pseln
 			}
 
 			catch (IOException e) {
@@ -69,12 +69,12 @@ public class SaveData {
 //			FileOutputStream outStream = new FileOutputStream(pathname); // file objekt erstellen, mit Name als
 //																			// Parameter
 //
-//			for (int i = 0; i < txt.length(); i++) // fÃŒr jedes Zeichen von Text ...
+//			for (int i = 0; i < txt.length(); i++) // für jedes Zeichen von Text ...
 //			{
 //				byte c = (byte) txt.charAt(i); // nimm Zeichen und wandle nach Byte
 //				outStream.write(c); // schreibe Byte ins File ...
 //			}
-//			outStream.close(); // endgültiges Schreiben auf den Datenträger, wie beim USB abstöpseln
+//			outStream.close(); // endg�ltiges Schreiben auf den Datentr�ger, wie beim USB abst�pseln
 //		}
 //
 //		catch (IOException e) {
